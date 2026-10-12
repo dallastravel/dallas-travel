@@ -99,3 +99,55 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #0E2A47;
 }
+/* =========================================================
+   DALLAS ANIMATION EXTENSIONS (Fade, Slide, Flip, Scale)
+   ========================================================= */
+
+/* 1. Animasi Halaman Pertama Ditembus / Reload (Hero Section) */
+@keyframes heroFadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-hero-title {
+  animation: heroFadeDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 2. Keyframes & Class Animasi On-Scroll */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideFromLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFromRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes flipIn {
+  from { opacity: 0; transform: perspective(800px) rotateY(-90deg); }
+  to { opacity: 1; transform: perspective(800px) rotateY(0deg); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Class Siap Pakai di Tailwind / HTML */
+.anim-fade { animation: fadeIn 0.8s ease-out forwards; }
+.anim-slide-left { animation: slideFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.anim-slide-right { animation: slideFromRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.anim-flip { animation: flipIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.anim-zoom { animation: zoomIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
