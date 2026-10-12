@@ -29,20 +29,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation, onOpenDashboard 
         <div className="max-w-4xl mx-auto text-center space-y-6">
           
           {/* Top Brand Subtitle & Spiritual Kicker (From PDF Cover) */}
-          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-widest uppercase text-[#DFB76C] font-cinzel">
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-widest uppercase text-[#DFB76C] font-cinzel anim-fade">
             <span className="w-8 h-[1px] bg-gradient-to-r from-transparent to-[#C5A059]" />
             <span>PINTU MENUJU BAITULLAH · JOURNEY OF FAITH</span>
             <span className="w-8 h-[1px] bg-gradient-to-l from-transparent to-[#C5A059]" />
           </div>
 
-          {/* Primary Main Headline (Verbatim from PDF Page 2 & 4) */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white font-cinzel leading-none sm:leading-tight">
+          {/* Primary Main Headline dengan Animasi Elegan saat Reload */}
+          <h1 className="animate-hero-title text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white font-cinzel leading-none sm:leading-tight">
             Ingat Umrah, <br />
             <span className="text-[#DFB76C] drop-shadow-md">Ingat Dallas</span>
           </h1>
 
           {/* Slogan & Value Proposition (From PDF) */}
-          <p className="text-base sm:text-xl text-[#F5F2EB] font-serif-luxury italic max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-[#F5F2EB] font-serif-luxury italic max-w-2xl mx-auto leading-relaxed anim-fade">
             "Keberkahan Setiap Langkah Menuju Ridha Allah"
           </p>
 
