@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #1E293B;
+    background-color: #FBF9F5;
+    overflow-x: hidden;
+  }
+}
+
+.font-serif-luxury {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', Georgia, serif;
+}
+
+.font-sans-clean {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Dallas Signature Gold Gradient Utility */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #DFB76C 0%, #C5A059 45%, #9E7A31 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #DFB76C 0%, #C5A059 50%, #B88E3E 100%);
+}
+
+.navy-gradient-bg {
+  background: linear-gradient(145deg, #071E33 0%, #0E2A47 60%, #153B60 100%);
+}
+
+.ivory-gradient-bg {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBF9F5 60%, #F5F1E8 100%);
+}
+
+/* Subtle gold border */
+.gold-border {
+  border-color: rgba(197, 160, 89, 0.35);
+}
+
+/* 3D Card Flip Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.luxury-flip-timing {
+  transition: transform 900ms cubic-bezier(0.25, 1, 0.35, 1);
+  will-change: transform;
+}
+
+/* Smooth fade-in classes */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom scrollbar matching corporate palette */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #F1EDE4;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0E2A47;
+}

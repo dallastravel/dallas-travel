@@ -1,0 +1,6 @@
+{
+  "name": "PT Delta Laras Wisata (Dallas Tour & Travel)",
+  "description": "Website resmi dan dashboard interaktif PT Delta Laras Wisata (Dallas Tour & Travel) - Biro Perjalanan Ibadah Umroh & Haji Khusus Terpercaya Berizin Kemenag RI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
