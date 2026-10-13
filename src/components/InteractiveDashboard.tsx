@@ -16,9 +16,7 @@ import {
   TrendingUp,
   Share2,
   ShieldCheck,
-  CreditCard,
-  Code2,
-  Copy
+  CreditCard
 } from 'lucide-react';
 
 interface InteractiveDashboardProps {
@@ -30,7 +28,7 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
   onOpenConsultation,
   onBookSchedule
 }) => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'calculator' | 'schedules' | 'tracking' | 'code'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'calculator' | 'schedules' | 'tracking'>('overview');
 
   // Simulator / Calculator States
   const [selectedPkgId, setSelectedPkgId] = useState<string>('platinum-9d');
@@ -41,7 +39,6 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
   const [addOnTaifTour, setAddOnTaifTour] = useState<boolean>(false);
   const [addOnSimCard, setAddOnSimCard] = useState<boolean>(true);
   const [addOnWheelchair, setAddOnWheelchair] = useState<boolean>(false);
-  const [copiedCode, setCopiedCode] = useState(false);
 
   // Schedules Filter States
   const [scheduleAirlineFilter, setScheduleAirlineFilter] = useState<string>('all');
@@ -134,7 +131,6 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
             { id: 'calculator', label: 'Simulator Biaya & Paket', icon: Calculator },
             { id: 'schedules', label: 'Jadwal Kursi Terkini', icon: CalendarDays },
             { id: 'tracking', label: 'Cek Status Visa & Berkas', icon: FileSearch },
-            { id: 'code', label: 'Ekspor Standalone Template', icon: Code2 },
           ].map((tab) => {
             const Icon = tab.icon;
             return (
@@ -838,61 +834,6 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
 
               </div>
             )}
-          </div>
-        )}
-
-        {/* TAB 5: STANDALONE SINGLE-FILE CODE EXPORTER */}
-        {activeTab === 'code' && (
-          <div className="max-w-4xl mx-auto p-8 rounded-2xl bg-white border border-[#E2D9C8] shadow-md space-y-6 animate-in fade-in duration-300">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#F0EBE1] pb-4">
-              <div>
-                <span className="text-xs uppercase tracking-widest text-[#C5A059] font-cinzel font-bold">
-                  INSTALASI & PENGGUNAAN MANDIRI
-                </span>
-                <h3 className="text-xl font-bold text-[#0E2A47] font-cinzel">
-                  Kodingan Utuh Single-File (HTML + Tailwind + JS)
-                </h3>
-              </div>
-
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText(`<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PT Delta Laras Wisata (Dallas Tour & Travel)</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FBF9F5; color: #1E293B; }
-    .font-cinzel { font-family: 'Cinzel', serif; }
-  </style>
-</head>
-<body class="antialiased">
-  <!-- PT DELTA LARAS WISATA STANDALONE LANDING PAGE & DASHBOARD -->
-</body>
-</html>`);
-                  setCopiedCode(true);
-                  setTimeout(() => setCopiedCode(false), 3000);
-                }}
-                className="px-4 py-2 rounded-xl bg-[#0E2A47] text-white text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-[#153B60] transition-colors"
-              >
-                <Copy className="w-4 h-4 text-[#DFB76C]" />
-                <span>{copiedCode ? 'Tersalin ke Clipboard!' : 'Salin Template HTML'}</span>
-              </button>
-            </div>
-
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans-clean">
-              Sesuai arahan, aplikasi ini telah disesuaikan secara presisi dengan identitas resmi PT Delta Laras Wisata (Dallas Tour & Travel) berdasarkan dokumen Company Profile: Deep Royal Navy (#0E2A47), Royal Gold (#C5A059), Dallas Logo Red (#E5242A), dan Warm Ivory Canvas (#FBF9F5).
-            </p>
-
-            <div className="p-4 rounded-xl bg-[#FAF8F3] border border-[#E2D9C8] text-xs font-mono text-[#0E2A47] space-y-1">
-              <div>// Perusahaan: PT DELTA LARAS WISATA (DALLAS TOUR & TRAVEL)</div>
-              <div>// Izin Kemenag: PPIU No. 64/2020 & PIHK No. 690/2020</div>
-              <div>// Kantor Pusat: Binawan Building Lobby 3 LG, Kalibata Raya No. 25-30, Jakarta Timur</div>
-              <div>// Telepon: 021 - 8087 8321 | Fax: 021 - 8090 215</div>
-            </div>
           </div>
         )}
 
