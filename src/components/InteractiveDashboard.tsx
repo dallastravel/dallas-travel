@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PACKAGES, DEPARTURE_SCHEDULES, MOCK_TRACKING_DATA } from '../data/dallasData';
 import { StatFlipCard } from './StatFlipCard';
-import banner1 from '../assets/images/banner1.jpg'; // Import ornamen emas
+import banner1 from '../assets/images/banner2.jpg'; // Import ornamen emas
 import {
   LayoutDashboard,
   Calculator,
@@ -112,7 +112,7 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
       {/* Background Ornamen Ukiran Emas (Subtle Texture) */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-multiply">
         <img 
-          src={banner1} 
+          src={banner2} 
           alt="Islamic Pattern Background" 
           className="w-full h-full object-cover object-center filter sepia contrast-125"
           referrerPolicy="no-referrer"
