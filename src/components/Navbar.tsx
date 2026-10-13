@@ -52,7 +52,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
               <img 
                 src={logoDallas} 
                 alt="PT Delta Laras Wisata" 
-                className="h-9 w-auto object-contain" 
+                className="h-12 sm:h-14 w-auto object-contain" 
               />
             </button>
           </div>
