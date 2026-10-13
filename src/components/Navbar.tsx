@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LayoutDashboard, PhoneCall, Menu, X } from 'lucide-react';
-import { DallasLogo } from './DallasLogo';
+import logoDallas from '../assets/images/logo-dallas.png';
 
 interface NavbarProps {
   activeTab: 'landing' | 'dashboard';
@@ -40,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Zone 1: Official Dallas Logo from PDF */}
+          {/* Zone 1: Official Dallas Logo from PNG */}
           <div className="flex items-center">
             <button
               onClick={() => {
@@ -49,7 +49,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
               }}
               className="group text-left focus:outline-none"
             >
-              <DallasLogo variant="dark" size="sm" />
+              <img 
+                src={logoDallas} 
+                alt="PT Delta Laras Wisata" 
+                className="h-9 w-auto object-contain" 
+              />
             </button>
           </div>
 
