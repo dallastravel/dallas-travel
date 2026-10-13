@@ -1,7 +1,7 @@
 import React from 'react';
 import { LEADERSHIP, COMPANY_INFO } from '../data/dallasData';
 import { Quote, UserCheck, HeartHandshake, Award } from 'lucide-react';
-import { DallasLogo } from './DallasLogo';
+import logoDallas from '../assets/images/logo-dallas.png';
 
 export const LeadershipSection: React.FC = () => {
   return (
@@ -27,9 +27,13 @@ export const LeadershipSection: React.FC = () => {
           {/* Subtle gold glow */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#C5A059]/5 rounded-full blur-3xl pointer-events-none" />
           
-          {/* Top Dallas Logo & Title from PDF Page 2 */}
+          {/* Top Dallas Logo from PNG */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#F0EBE1] pb-6 mb-8">
-            <DallasLogo variant="light" size="sm" />
+            <img 
+              src={logoDallas} 
+              alt="PT Delta Laras Wisata" 
+              className="h-10 sm:h-12 w-auto object-contain" 
+            />
             <div className="text-center sm:text-right">
               <span className="text-xs font-cinzel font-bold text-[#C5A059] uppercase tracking-wider block">
                 DEWAN KOMISARIS
