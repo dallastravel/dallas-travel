@@ -52,11 +52,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
               <img 
                 src={logoDallas} 
                 alt="PT Delta Laras Wisata" 
-                className="h-12 sm:h-14 w-auto object-contain" 
+                className="h-16 sm:h-20 w-auto object-contain transform -translate-y-1" 
               />
             </button>
           </div>
-
+          
           {/* Zone 2: Nav Links (Clean typography with subtle gold underline) */}
           <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
