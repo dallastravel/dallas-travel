@@ -40,22 +40,25 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Zone 1: Official Dallas Logo from PNG */}
-          <div className="flex items-center">
-            <button
-              onClick={() => {
-                setActiveTab('landing');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="group text-left focus:outline-none"
-            >
-              <img 
-  src={logoDallas} 
-  alt="PT Delta Laras Wisata" 
-  className="h-10 sm:h-12 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.85)]" 
-/>
-            </button>
-          </div>
+          {/* Zone 1: Floating Badge Logo Overlapping Navbar & Hero */}
+<div className="relative flex items-center">
+  <button
+    onClick={() => {
+      setActiveTab('landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }}
+    className="group text-left focus:outline-none transition-transform hover:scale-105"
+  >
+    {/* Card/Badge Latar Terang yang Menggantung Melintasi 2 Section */}
+    <div className="bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-b-2xl shadow-2xl border-x border-b border-[#C5A059]/50 flex items-center justify-center transform translate-y-3 sm:translate-y-4 transition-all">
+      <img 
+        src={logoDallas} 
+        alt="PT Delta Laras Wisata" 
+        className="h-12 sm:h-16 w-auto object-contain" 
+      />
+    </div>
+  </button>
+</div>
           
           {/* Zone 2: Nav Links (Clean typography with subtle gold underline) */}
           <nav className="hidden lg:flex items-center gap-6">
