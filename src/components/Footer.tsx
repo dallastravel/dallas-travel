@@ -1,7 +1,7 @@
 import React from 'react';
 import { COMPANY_INFO } from '../data/dallasData';
 import { MapPin, Phone, Mail, Globe, ArrowUp } from 'lucide-react';
-import { DallasLogo } from './DallasLogo';
+import logoDallas from '../assets/images/logo-dallas.png';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -14,9 +14,13 @@ export const Footer: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
           
-          {/* Brand Info with Official Dallas Logo */}
+          {/* Brand Info with Official Dallas PNG Logo */}
           <div className="lg:col-span-5 space-y-4">
-            <DallasLogo variant="dark" size="md" />
+            <img 
+  src={logoDallas} 
+  alt="PT Delta Laras Wisata" 
+  className="h-14 sm:h-20 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.75)] filter brightness-110" 
+/>
 
             <p className="text-xs text-slate-300 font-sans-clean leading-relaxed font-light max-w-sm pt-2">
               Biro Penyelenggara Perjalanan Ibadah Umroh (PPIU No. 64/2020) dan Ibadah Haji Khusus (PIHK No. 690/2020) berizin resmi Kementerian Agama Republik Indonesia.
@@ -60,7 +64,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Office & Contacts (From PDF Page 1) */}
+          {/* Office & Contacts */}
           <div className="lg:col-span-4 space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-cinzel">
               Kantor Pusat & Kontak
