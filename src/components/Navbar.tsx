@@ -50,10 +50,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
               className="group text-left focus:outline-none"
             >
               <img 
-                src={logoDallas} 
-                alt="PT Delta Laras Wisata" 
-                className="h-16 sm:h-20 w-auto object-contain transform -translate-y-1" 
-              />
+  src={logoDallas} 
+  alt="PT Delta Laras Wisata" 
+  className="h-10 sm:h-12 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.85)]" 
+/>
             </button>
           </div>
           
