@@ -30,10 +30,10 @@ export const LeadershipSection: React.FC = () => {
           {/* Top Dallas Logo from PNG */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#F0EBE1] pb-6 mb-8">
             <img 
-              src={logoDallas} 
-              alt="PT Delta Laras Wisata" 
-              className="h-10 sm:h-12 w-auto object-contain" 
-            />
+  src={logoDallas} 
+  alt="PT Delta Laras Wisata" 
+  className="h-14 sm:h-20 w-auto object-contain" 
+/>
             <div className="text-center sm:text-right">
               <span className="text-xs font-cinzel font-bold text-[#C5A059] uppercase tracking-wider block">
                 DEWAN KOMISARIS
