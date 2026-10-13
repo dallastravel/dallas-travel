@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PACKAGES, DEPARTURE_SCHEDULES, MOCK_TRACKING_DATA } from '../data/dallasData';
 import { StatFlipCard } from './StatFlipCard';
+import banner1 from '../assets/images/banner1.jpg'; // Import ornamen emas
 import {
   LayoutDashboard,
   Calculator,
@@ -106,8 +107,19 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
   });
 
   return (
-    <section id="dashboard-section" className="py-20 bg-[#F5F2EB] border-t border-[#E2D9C8] relative text-[#1E293B]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="dashboard-section" className="py-20 bg-[#F5F2EB] border-t border-[#E2D9C8] relative text-[#1E293B] overflow-hidden">
+      
+      {/* Background Ornamen Ukiran Emas (Subtle Texture) */}
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-multiply">
+        <img 
+          src={banner1} 
+          alt="Islamic Pattern Background" 
+          className="w-full h-full object-cover object-center filter sepia contrast-125"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
@@ -125,7 +137,7 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
         </div>
 
         {/* Dashboard Navigation Tabs */}
-        <div className="flex items-center justify-start sm:justify-center overflow-x-auto gap-2 p-1.5 bg-white rounded-2xl border border-[#E2D9C8] mb-10 shadow-sm">
+        <div className="flex items-center justify-start sm:justify-center overflow-x-auto gap-2 p-1.5 bg-white/90 backdrop-blur-md rounded-2xl border border-[#E2D9C8] mb-10 shadow-sm">
           {[
             { id: 'overview', label: 'Ringkasan & Visualisasi Data', icon: TrendingUp },
             { id: 'calculator', label: 'Simulator Biaya & Paket', icon: Calculator },
@@ -153,7 +165,7 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
         {/* TAB 1: OVERVIEW & DATA VISUALIZATION */}
         {activeTab === 'overview' && (
           <div className="space-y-8 animate-in fade-in duration-300">
-            {/* Top 4 KPI Metrics with 3D Flip Cards on Hover / Click */}
+            {/* Top 4 KPI Metrics with 3D Flip Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               <StatFlipCard
                 title="Total Jamaah"
@@ -229,7 +241,7 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               
               {/* Chart 1: Distribusi Paket Pilihan Jamaah */}
-              <div className="lg:col-span-6 p-7 rounded-2xl bg-white border border-[#E2D9C8] shadow-sm space-y-6">
+              <div className="lg:col-span-6 p-7 rounded-2xl bg-white/95 backdrop-blur-md border border-[#E2D9C8] shadow-sm space-y-6">
                 <div className="flex items-center justify-between border-b border-[#F0EBE1] pb-3">
                   <h3 className="text-base font-bold text-[#0E2A47] font-cinzel">
                     Distribusi Pilihan Paket Ibadah
@@ -266,7 +278,7 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
               </div>
 
               {/* Chart 2: Tren Alokasi Kursi Bulanan */}
-              <div className="lg:col-span-6 p-7 rounded-2xl bg-white border border-[#E2D9C8] shadow-sm space-y-6">
+              <div className="lg:col-span-6 p-7 rounded-2xl bg-white/95 backdrop-blur-md border border-[#E2D9C8] shadow-sm space-y-6">
                 <div className="flex items-center justify-between border-b border-[#F0EBE1] pb-3">
                   <h3 className="text-base font-bold text-[#0E2A47] font-cinzel">
                     Alokasi Seat Keberangkatan 2025/2026
@@ -325,7 +337,7 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in duration-300">
             
             {/* Left Configuration Panel */}
-            <div className="lg:col-span-7 p-7 rounded-2xl bg-white border border-[#E2D9C8] shadow-sm space-y-6">
+            <div className="lg:col-span-7 p-7 rounded-2xl bg-white/95 backdrop-blur-md border border-[#E2D9C8] shadow-sm space-y-6">
               <h3 className="text-xl font-bold text-[#0E2A47] font-cinzel">
                 Simulator Perjalanan Ibadah Dallas
               </h3>
@@ -586,7 +598,7 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
         {activeTab === 'schedules' && (
           <div className="space-y-6 animate-in fade-in duration-300">
             {/* Filter Bar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-white border border-[#E2D9C8] shadow-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-[#E2D9C8] shadow-sm">
               <div className="flex items-center gap-3">
                 <span className="text-xs text-slate-700 font-bold">Filter Maskapai:</span>
                 <div className="flex items-center gap-2">
@@ -627,7 +639,7 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
             </div>
 
             {/* Table Schedules */}
-            <div className="overflow-x-auto rounded-2xl border border-[#E2D9C8] bg-white shadow-sm">
+            <div className="overflow-x-auto rounded-2xl border border-[#E2D9C8] bg-white/95 backdrop-blur-md shadow-sm">
               <table className="w-full text-left text-xs sm:text-sm">
                 <thead className="bg-[#0E2A47] text-[#DFB76C] font-cinzel uppercase text-[11px] tracking-wider">
                   <tr>
@@ -709,7 +721,7 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
         {activeTab === 'tracking' && (
           <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-300">
             {/* Search Box */}
-            <div className="p-6 rounded-2xl bg-white border border-[#E2D9C8] shadow-sm">
+            <div className="p-6 rounded-2xl bg-white/95 backdrop-blur-md border border-[#E2D9C8] shadow-sm">
               <form onSubmit={handleSearchTracking} className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="text"
@@ -738,7 +750,7 @@ export const InteractiveDashboard: React.FC<InteractiveDashboardProps> = ({
             )}
 
             {currentTracking && (
-              <div className="p-8 rounded-2xl bg-white border border-[#E2D9C8] shadow-md space-y-6">
+              <div className="p-8 rounded-2xl bg-white/95 backdrop-blur-md border border-[#E2D9C8] shadow-md space-y-6">
                 
                 {/* Header Information */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#F0EBE1] pb-5">

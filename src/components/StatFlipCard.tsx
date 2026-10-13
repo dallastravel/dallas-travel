@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LucideIcon, RotateCw } from 'lucide-react';
 
 export interface StatFlipCardProps {
@@ -35,6 +35,15 @@ export const StatFlipCard: React.FC<StatFlipCardProps> = ({
   accentColor = '#C5A059',
 }) => {
   const [isMobileFlipped, setIsMobileFlipped] = useState(false);
+
+  // Fitur Auto-Flip Otomatis setiap 5 detik bergantian
+  useEffect(() => {
+    const flipInterval = setInterval(() => {
+      setIsMobileFlipped((prev) => !prev);
+    }, 5000); // Berputar otomatis tiap 5 detik
+
+    return () => clearInterval(flipInterval);
+  }, []);
 
   const toggleFlip = () => {
     setIsMobileFlipped(!isMobileFlipped);
@@ -82,7 +91,7 @@ export const StatFlipCard: React.FC<StatFlipCardProps> = ({
             <span className="truncate pr-2">{subtitle}</span>
             <span className="text-[10px] uppercase tracking-wider text-[#C5A059] font-bold flex items-center gap-1 shrink-0 opacity-80 group-hover:opacity-100">
               <RotateCw className="w-2.5 h-2.5" />
-              <span>Flip</span>
+              <span>Auto-Flip</span>
             </span>
           </div>
         </div>
