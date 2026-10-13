@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PACKAGES, DEPARTURE_SCHEDULES, MOCK_TRACKING_DATA } from '../data/dallasData';
 import { StatFlipCard } from './StatFlipCard';
-import banner1 from '../assets/images/banner2.jpg'; // Import ornamen emas
+import banner2 from '../assets/images/banner2.jpg'; // Import ornamen emas
 import {
   LayoutDashboard,
   Calculator,
