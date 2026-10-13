@@ -1,31 +1,55 @@
-import React from 'react';
-import { IMAGES } from '../assets/images';
+import React, { useState, useEffect } from 'react';
 import { COMPANY_INFO } from '../data/dallasData';
 import { ShieldCheck, Award, MapPin, Calendar, Sparkles, ChevronDown, ArrowRight } from 'lucide-react';
+
+// Import 3 gambar masjid baru dari folder assets/images
+import masjidV1 from '../assets/images/masjid-v1.jpg';
+import masjidV2 from '../assets/images/masjid-v2.jpg';
+import masjidV3 from '../assets/images/masjid-v3.jpg';
 
 interface HeroProps {
   onOpenConsultation: () => void;
   onOpenDashboard: () => void;
 }
 
+// Daftar gambar latar yang akan berputar otomatis setiap 5 detik
+const HERO_BACKGROUNDS = [masjidV1, masjidV2, masjidV3];
+
 export const Hero: React.FC<HeroProps> = ({ onOpenConsultation, onOpenDashboard }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Efek ganti gambar otomatis
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % HERO_BACKGROUNDS.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="hero" className="relative min-h-[95vh] flex items-center justify-center pt-28 pb-20 overflow-hidden">
-      {/* Background Hero Image with Measured Scrim Overlay */}
+      {/* Background Hero Image Slideshow */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={IMAGES.heroKaaba}
-          alt="Masjidil Haram Kaaba Mecca Twilight"
-          className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 ease-out"
-          referrerPolicy="no-referrer"
-        />
+        {HERO_BACKGROUNDS.map((imgSrc, index) => (
+          <img
+            key={index}
+            src={imgSrc}
+            alt={`Slide background ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover object-center scale-105 transition-opacity duration-1000 ease-out ${
+              index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            }`}
+            referrerPolicy="no-referrer"
+          />
+        ))}
+
         {/* Measured Contrast Scrims matching PDF Cover (Deep Navy + Gold Radial Warmth) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071E33] via-[#071E33]/85 to-[#0E2A47]/65" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,160,89,0.12)_0%,transparent_70%)]" />
-        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#071E33] via-[#071E33]/85 to-[#0E2A47]/65" />
+        <div className="absolute inset-0 z-20 bg-[radial-gradient(circle_at_center,rgba(197,160,89,0.12)_0%,transparent_70%)]" />
+        <div className="absolute inset-0 z-20 bg-black/25" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           
           {/* Top Brand Subtitle & Spiritual Kicker (From PDF Cover) */}
@@ -125,7 +149,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation, onOpenDashboard 
       </div>
 
       {/* Subtle Scroll Indicator */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
         <a href="#profil" className="text-[10px] tracking-widest uppercase text-[#DFB76C] flex flex-col items-center gap-1">
           <span>Gulir Ke Bawah</span>
           <ChevronDown className="w-4 h-4 animate-bounce text-[#DFB76C]" />
