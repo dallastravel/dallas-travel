@@ -57,8 +57,8 @@ export const GallerySection: React.FC = () => {
           alt="Gallery Background" 
           className="w-full h-full object-cover" 
         />
-        {/* Overlay gelap kebiruan khas Dallas Tour agar teks dan foto galeri sangat kontras */}
-        <div className="absolute inset-0 bg-[#071E33]/90 backdrop-blur-[1px]" />
+        {/* Overlay gelap kebiruan yang dikurangi kepekatannya agar gambar background lebih jelas */}
+        <div className="absolute inset-0 bg-[#071E33]/50 backdrop-blur-[1px]" />
       </div>
 
       {/* Content Container */}
