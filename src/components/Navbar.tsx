@@ -99,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
               <span>{activeTab === 'dashboard' ? 'Web Profil' : 'Dashboard'}</span>
             </button>
 
-            {/* Tombol Galeri */}
+            {/* Tombol Galeri dengan Efek Kilatan Cahaya */}
             <button
               onClick={() => setActiveTab('gallery')}
               className={`relative overflow-hidden group px-3.5 py-2 rounded-lg text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer flex items-center gap-1.5 border shadow-[0_3px_0_0_#997A30] active:translate-y-0.5 ${
@@ -108,10 +108,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
                   : 'bg-gradient-to-r from-[#C5A059] via-[#DFB76C] to-[#C5A059] text-[#071E33] border-amber-200 hover:brightness-110'
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Galeri</span>
+              {/* Efek Kilatan Cahaya Berjalan */}
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+              
+              <Sparkles className="w-3.5 h-3.5 relative z-10" />
+              <span className="relative z-10">Galeri</span>
             </button>
-
+            
             {/* Konsultasi */}
             <button
               onClick={onOpenConsultation}
