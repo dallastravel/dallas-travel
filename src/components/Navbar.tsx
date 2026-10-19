@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { LayoutDashboard, PhoneCall, Menu, X } from 'lucide-react';
+import { LayoutDashboard, PhoneCall, Menu, X, Sparkles } from 'lucide-react';
 import logoDallas from '../assets/images/logo-dallas.png';
 
 interface NavbarProps {
-  activeTab: 'landing' | 'dashboard';
-  setActiveTab: (tab: 'landing' | 'dashboard') => void;
+  activeTab: 'landing' | 'dashboard' | 'gallery';
+  setActiveTab: (tab: 'landing' | 'dashboard' | 'gallery') => void;
   onOpenConsultation: () => void;
 }
 
@@ -40,30 +40,31 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Zone 1: Logo PNG Transparan dengan Efek Cahaya (Glow) di Navbar */}
-<div className="flex items-center">
-  <button
-    onClick={() => {
-      setActiveTab('landing');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }}
-    className="group text-left focus:outline-none py-1 transition-transform hover:scale-105"
-  >
-    <img 
-      src={logoDallas} 
-      alt="PT Delta Laras Wisata" 
-      className="h-12 sm:h-14 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.75)] filter brightness-110" 
-    />
-  </button>
-</div>          
-          {/* Zone 2: Nav Links (Clean typography with subtle gold underline) */}
+          {/* Zone 1: Logo PNG Transparan */}
+          <div className="flex items-center">
+            <button
+              onClick={() => {
+                setActiveTab('landing');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="group text-left focus:outline-none py-1 transition-transform hover:scale-105"
+            >
+              <img 
+                src={logoDallas} 
+                alt="PT Delta Laras Wisata" 
+                className="h-12 sm:h-14 w-auto object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.75)] filter brightness-110" 
+              />
+            </button>
+          </div>          
+
+          {/* Zone 2: Nav Links & Actions */}
           <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => {
-                  if (activeTab === 'dashboard') {
+                  if (activeTab === 'dashboard' || activeTab === 'gallery') {
                     setActiveTab('landing');
                   }
                 }}
@@ -74,40 +75,44 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
             ))}
 
             {/* Toggle View: Dashboard Interaktif */}
-<button 
-  onClick={() => {
-    setActiveTab(activeTab === 'landing' ? 'dashboard' : 'landing');
-    if (activeTab === 'landing') {
-      const dashboardElem = document.getElementById('dashboard-section');
-      if (dashboardElem) dashboardElem.scrollIntoView({ behavior: 'smooth' });
-    }
-  }}
-  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide transition-all border ${
-    activeTab === 'dashboard' 
-      ? 'bg-[#C5A059] text-[#071E33] border-[#C5A059] font-bold shadow-md' 
-      : 'bg-[#0E2A47]/80 text-[#DFB76C] border-[#C5A059]/40 hover:bg-[#153B60]'
-  }`}
->
-  <LayoutDashboard className="w-3.5 h-3.5" />
-  <span>{activeTab === 'dashboard' ? 'Tampilan Web Profil' : 'Dashboard Interaktif'}</span>
-</button>
+            <button 
+              onClick={() => {
+                const nextTab = activeTab === 'landing' ? 'dashboard' : 'landing';
+                setActiveTab(nextTab);
+                if (nextTab === 'dashboard') {
+                  setTimeout(() => {
+                    const dashboardElem = document.getElementById('dashboard-section');
+                    if (dashboardElem) dashboardElem.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }
+              }}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide transition-all border ${
+                activeTab === 'dashboard' 
+                  ? 'bg-[#C5A059] text-[#071E33] border-[#C5A059] font-bold shadow-md' 
+                  : 'bg-[#0E2A47]/80 text-[#DFB76C] border-[#C5A059]/40 hover:bg-[#153B60]'
+              }`}
+            >
+              <LayoutDashboard className="w-3.5 h-3.5" />
+              <span>{activeTab === 'dashboard' ? 'Tampilan Web Profil' : 'Dashboard Interaktif'}</span>
+            </button>
 
-{/* Tombol Galeri 3D Spesial dengan Efek Kilatan Cahaya */}
-<button
-  onClick={() => setActiveTab('gallery')}
-  className={`relative overflow-hidden group px-4 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer flex items-center gap-1.5 border shadow-[0_4px_0_0_#997A30] active:translate-y-1 active:shadow-[0_0_0_0_#997A30] ${
-    activeTab === 'gallery'
-      ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-[#071E33] border-amber-300 shadow-[0_2px_0_0_#7A5F20]'
-      : 'bg-gradient-to-r from-[#C5A059] via-[#DFB76C] to-[#C5A059] text-[#071E33] border-amber-200 hover:brightness-110'
-  }`}
->
-  {/* Efek Kilatan Cahaya Berjalan Setiap Beberapa Detik */}
-  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
-  
-  <span className="relative z-10 drop-shadow-sm"> Galeri Foto</span>
-</button>
+            {/* Tombol Galeri 3D */}
+            <button
+              onClick={() => setActiveTab('gallery')}
+              className={`relative overflow-hidden group px-4 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer flex items-center gap-1.5 border shadow-[0_4px_0_0_#997A30] active:translate-y-1 active:shadow-[0_0_0_0_#997A30] ${
+                activeTab === 'gallery'
+                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-[#071E33] border-amber-300 shadow-[0_2px_0_0_#7A5F20]'
+                  : 'bg-gradient-to-r from-[#C5A059] via-[#DFB76C] to-[#C5A059] text-[#071E33] border-amber-200 hover:brightness-110'
+              }`}
+            >
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
+              <span className="relative z-10 drop-shadow-sm flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5" /> Galeri Foto
+              </span>
+            </button>
+          </nav>
 
-          {/* Zone 3: Primary Action Button (Dallas Red + Gold Accent) */}
+          {/* Zone 3: Primary Action Button */}
           <div className="hidden sm:flex items-center gap-3">
             <button
               onClick={onOpenConsultation}
@@ -135,6 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
+
         </div>
       </div>
 
@@ -148,13 +154,23 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
                 href={link.href}
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  if (activeTab === 'dashboard') setActiveTab('landing');
+                  if (activeTab === 'dashboard' || activeTab === 'gallery') setActiveTab('landing');
                 }}
                 className="px-3 py-2 text-slate-200 hover:text-[#DFB76C] hover:bg-[#0E2A47] rounded-lg text-sm font-medium transition-colors"
               >
                 {link.label}
               </a>
             ))}
+            <button
+              onClick={() => {
+                setActiveTab('gallery');
+                setMobileMenuOpen(false);
+              }}
+              className="px-3 py-2 text-left text-slate-200 hover:text-[#DFB76C] hover:bg-[#0E2A47] rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+            >
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <span>✨ Galeri Foto</span>
+            </button>
           </div>
 
           <div className="pt-3 border-t border-white/10 flex flex-col gap-2.5">
