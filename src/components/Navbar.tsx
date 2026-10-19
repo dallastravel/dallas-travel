@@ -40,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Zone 1: Logo PNG Transparan */}
+          {/* Logo */}
           <div className="flex items-center">
             <button
               onClick={() => {
@@ -57,8 +57,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
             </button>
           </div>          
 
-          {/* Zone 2: Nav Links & Actions */}
-          <nav className="hidden lg:flex items-center gap-6">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden xl:flex items-center gap-5">
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -68,13 +68,16 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
                     setActiveTab('landing');
                   }
                 }}
-                className="text-xs sm:text-sm font-medium text-slate-200 hover:text-[#DFB76C] transition-colors whitespace-nowrap relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#C5A059] hover:after:w-full after:transition-all after:duration-300"
+                className="text-xs font-medium text-slate-200 hover:text-[#DFB76C] transition-colors whitespace-nowrap relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#C5A059] hover:after:w-full after:transition-all after:duration-300"
               >
                 {link.label}
               </a>
             ))}
+          </nav>
 
-            {/* Toggle View: Dashboard Interaktif */}
+          {/* Action Buttons (Dashboard, Gallery & Consultation) - Proporsional */}
+          <div className="hidden lg:flex items-center gap-2.5">
+            {/* Toggle View: Dashboard */}
             <button 
               onClick={() => {
                 const nextTab = activeTab === 'landing' ? 'dashboard' : 'landing';
@@ -86,40 +89,36 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
                   }, 100);
                 }
               }}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide transition-all border ${
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all border ${
                 activeTab === 'dashboard' 
                   ? 'bg-[#C5A059] text-[#071E33] border-[#C5A059] font-bold shadow-md' 
                   : 'bg-[#0E2A47]/80 text-[#DFB76C] border-[#C5A059]/40 hover:bg-[#153B60]'
               }`}
             >
               <LayoutDashboard className="w-3.5 h-3.5" />
-              <span>{activeTab === 'dashboard' ? 'Tampilan Web Profil' : 'Dashboard Interaktif'}</span>
+              <span>{activeTab === 'dashboard' ? 'Web Profil' : 'Dashboard'}</span>
             </button>
 
-            {/* Tombol Galeri 3D */}
+            {/* Tombol Galeri */}
             <button
               onClick={() => setActiveTab('gallery')}
-              className={`relative overflow-hidden group px-4 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer flex items-center gap-1.5 border shadow-[0_4px_0_0_#997A30] active:translate-y-1 active:shadow-[0_0_0_0_#997A30] ${
+              className={`relative overflow-hidden group px-3.5 py-2 rounded-lg text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer flex items-center gap-1.5 border shadow-[0_3px_0_0_#997A30] active:translate-y-0.5 ${
                 activeTab === 'gallery'
-                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-[#071E33] border-amber-300 shadow-[0_2px_0_0_#7A5F20]'
+                  ? 'bg-amber-600 text-white border-amber-400'
                   : 'bg-gradient-to-r from-[#C5A059] via-[#DFB76C] to-[#C5A059] text-[#071E33] border-amber-200 hover:brightness-110'
               }`}
             >
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
-              <span className="relative z-10 drop-shadow-sm flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5" /> Galeri Foto
-              </span>
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Galeri</span>
             </button>
-          </nav>
 
-          {/* Zone 3: Primary Action Button */}
-          <div className="hidden sm:flex items-center gap-3">
+            {/* Konsultasi */}
             <button
               onClick={onOpenConsultation}
-              className="px-4 py-2 text-xs uppercase tracking-wider font-bold text-white bg-[#E5242A] hover:bg-[#D32F2F] rounded-lg shadow-md hover:shadow-lg active:scale-95 transition-all whitespace-nowrap flex items-center gap-2 border border-red-400/40"
+              className="px-3.5 py-2 text-xs uppercase tracking-wider font-bold text-white bg-[#E5242A] hover:bg-[#D32F2F] rounded-lg shadow-md transition-all flex items-center gap-1.5 border border-red-400/40"
             >
               <PhoneCall className="w-3.5 h-3.5" />
-              <span>Konsultasi Ibadah</span>
+              <span>Konsultasi</span>
             </button>
           </div>
 
@@ -169,7 +168,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
               className="px-3 py-2 text-left text-slate-200 hover:text-[#DFB76C] hover:bg-[#0E2A47] rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
             >
               <Sparkles className="w-4 h-4 text-amber-400" />
-              <span>✨ Galeri Foto</span>
+              <span>✨ Galeri Foto Jamaah</span>
             </button>
           </div>
 
