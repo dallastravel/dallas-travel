@@ -74,24 +74,38 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
             ))}
 
             {/* Toggle View: Dashboard Interaktif */}
-            <button
-              onClick={() => {
-                setActiveTab(activeTab === 'landing' ? 'dashboard' : 'landing');
-                if (activeTab === 'landing') {
-                  const dashboardElem = document.getElementById('dashboard-section');
-                  if (dashboardElem) dashboardElem.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide transition-all border ${
-                activeTab === 'dashboard'
-                  ? 'bg-[#C5A059] text-[#071E33] border-[#C5A059] font-bold shadow-md'
-                  : 'bg-[#0E2A47]/80 text-[#DFB76C] border-[#C5A059]/40 hover:bg-[#153B60]'
-              }`}
-            >
-              <LayoutDashboard className="w-3.5 h-3.5" />
-              <span>{activeTab === 'dashboard' ? 'Tampilan Web Profil' : 'Dashboard Interaktif'}</span>
-            </button>
-          </nav>
+<button 
+  onClick={() => {
+    setActiveTab(activeTab === 'landing' ? 'dashboard' : 'landing');
+    if (activeTab === 'landing') {
+      const dashboardElem = document.getElementById('dashboard-section');
+      if (dashboardElem) dashboardElem.scrollIntoView({ behavior: 'smooth' });
+    }
+  }}
+  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide transition-all border ${
+    activeTab === 'dashboard' 
+      ? 'bg-[#C5A059] text-[#071E33] border-[#C5A059] font-bold shadow-md' 
+      : 'bg-[#0E2A47]/80 text-[#DFB76C] border-[#C5A059]/40 hover:bg-[#153B60]'
+  }`}
+>
+  <LayoutDashboard className="w-3.5 h-3.5" />
+  <span>{activeTab === 'dashboard' ? 'Tampilan Web Profil' : 'Dashboard Interaktif'}</span>
+</button>
+
+{/* Tombol Galeri 3D Spesial dengan Efek Kilatan Cahaya */}
+<button
+  onClick={() => setActiveTab('gallery')}
+  className={`relative overflow-hidden group px-4 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer flex items-center gap-1.5 border shadow-[0_4px_0_0_#997A30] active:translate-y-1 active:shadow-[0_0_0_0_#997A30] ${
+    activeTab === 'gallery'
+      ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-[#071E33] border-amber-300 shadow-[0_2px_0_0_#7A5F20]'
+      : 'bg-gradient-to-r from-[#C5A059] via-[#DFB76C] to-[#C5A059] text-[#071E33] border-amber-200 hover:brightness-110'
+  }`}
+>
+  {/* Efek Kilatan Cahaya Berjalan Setiap Beberapa Detik */}
+  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
+  
+  <span className="relative z-10 drop-shadow-sm"> Galeri Foto</span>
+</button>
 
           {/* Zone 3: Primary Action Button (Dallas Red + Gold Accent) */}
           <div className="hidden sm:flex items-center gap-3">
