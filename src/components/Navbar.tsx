@@ -108,8 +108,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
                   : 'bg-gradient-to-r from-[#C5A059] via-[#DFB76C] to-[#C5A059] text-[#071E33] border-amber-200 hover:brightness-110'
               }`}
             >
-              {/* Efek Kilatan Cahaya Berjalan */}
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+              {/* Efek Kilatan Cahaya Menyala (Glow/Pulse) */}
+              <div className="absolute inset-0 bg-white/30 animate-pulse pointer-events-none" />
               
               <Sparkles className="w-3.5 h-3.5 relative z-10" />
               <span className="relative z-10">Galeri</span>
