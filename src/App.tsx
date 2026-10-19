@@ -10,6 +10,7 @@ import { MentorsSection } from './components/MentorsSection';
 import { BranchesDirectory } from './components/BranchesDirectory';
 import { PartnersSection } from './components/PartnersSection';
 import { InteractiveDashboard } from './components/InteractiveDashboard';
+import { GallerySection } from './components/GallerySection'; // <-- SUDAH DI-IMPORT DI SINI
 import { BookingModal } from './components/BookingModal';
 import { Footer } from './components/Footer';
 import { ScrollReveal } from './components/ScrollReveal';
@@ -85,12 +86,9 @@ export default function App() {
             <InteractiveDashboard />
           </div>
         ) : (
-          /* Halaman Khusus Galeri */
-          <div className="pt-24 min-h-[90vh] bg-gray-900 text-white flex items-center justify-center">
-            <div className="text-center">
-              <h2 className="text-2xl font-bold mb-2">✨ Galeri Foto Jamaah</h2>
-              <p className="text-gray-400">Konten galeri sedang ditampilkan di sini.</p>
-            </div>
+          /* Halaman Khusus Galeri - MEMANGGIL KOMPONEN GALERI */
+          <div className="pt-24 min-h-[90vh] bg-gray-900 text-white">
+            <GallerySection />
           </div>
         )}
       </main>
