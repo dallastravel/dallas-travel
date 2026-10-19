@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// Import gambar secara langsung agar aman saat di-build oleh Vite & GitHub Pages
+// Import gambar galeri
 import foto1 from '../assets/images/foto-1.jpeg';
 import foto2 from '../assets/images/foto-2.jpeg';
 import foto3 from '../assets/images/foto-3.jpeg';
@@ -17,6 +17,9 @@ import foto13 from '../assets/images/foto-13.jpeg';
 import foto14 from '../assets/images/foto-14.jpeg';
 import foto15 from '../assets/images/foto-15.jpeg';
 import foto16 from '../assets/images/foto-16.jpeg';
+
+// Import gambar background Ka'bah
+import bgKaaba from '../assets/images/hero_kaaba_grandeur_1791292468087.jpg';
 
 export const GallerySection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -46,14 +49,32 @@ export const GallerySection: React.FC = () => {
     : galleryItems.filter(item => item.category === activeCategory);
 
   return (
-    <section id="galeri" className="py-20 bg-gray-900 text-white min-h-[90vh]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="galeri" className="relative py-20 text-white min-h-[90vh] overflow-hidden">
+      {/* Background Image & Dark Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={bgKaaba} 
+          alt="Kaaba Background" 
+          className="w-full h-full object-cover filter brightness-50 blur-[2px]" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#071E33]/90 via-[#071E33]/95 to-[#071E33]" />
+      </div>
+
+      {/* Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="text-amber-500 font-semibold tracking-wider uppercase text-sm">Dokumentasi Perjalanan</span>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-2">Galeri Momen Berharga Jamaah</h2>
-          <p className="text-gray-400 mt-2 max-w-2xl mx-auto">Rekaman kebersamaan, kekhusyukan ibadah, dan kenyamanan fasilitas bersama Dallas Tour & Travel.</p>
+          <span className="text-amber-400 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full font-semibold tracking-wider uppercase text-xs">
+            Dokumentasi Perjalanan
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3 text-white drop-shadow-md">
+            Galeri Momen Berharga Jamaah
+          </h2>
+          <p className="text-gray-300 mt-2 max-w-2xl mx-auto text-sm md:text-base">
+            Rekaman kebersamaan, kekhusyukan ibadah, dan kenyamanan fasilitas bersama Dallas Tour & Travel.
+          </p>
         </div>
 
+        {/* Filter Kategori */}
         <div className="flex justify-center gap-3 mb-10 flex-wrap">
           {[
             { id: 'all', label: 'Semua Foto' },
@@ -67,8 +88,8 @@ export const GallerySection: React.FC = () => {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeCategory === cat.id 
-                  ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30 font-bold' 
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
+                  ? 'bg-amber-500 text-[#071E33] shadow-lg shadow-amber-500/30 font-bold' 
+                  : 'bg-black/40 backdrop-blur-md text-gray-300 hover:bg-black/60 hover:text-white border border-white/10'
               }`}
             >
               {cat.label}
@@ -76,12 +97,13 @@ export const GallerySection: React.FC = () => {
           ))}
         </div>
 
+        {/* Grid Foto */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredItems.map((item) => (
             <div
               key={item.id}
               onClick={() => setSelectedImage({ src: item.src, caption: item.caption })}
-              className="overflow-hidden rounded-xl shadow-xl group relative cursor-pointer bg-gray-800 border border-gray-700 hover:border-amber-500/50 transition-all"
+              className="overflow-hidden rounded-xl shadow-xl group relative cursor-pointer bg-gray-800/80 border border-white/10 hover:border-amber-500/50 transition-all backdrop-blur-sm"
             >
               <img 
                 src={item.src} 
@@ -89,7 +111,7 @@ export const GallerySection: React.FC = () => {
                 className="w-full h-56 object-cover transform transition duration-500 group-hover:scale-110" 
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
                 <p className="text-sm font-medium text-white">{item.caption}</p>
               </div>
             </div>
@@ -97,9 +119,10 @@ export const GallerySection: React.FC = () => {
         </div>
       </div>
 
+      {/* Lightbox Modal Zoom Foto */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm" 
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-md" 
           onClick={() => setSelectedImage(null)}
         >
           <div className="relative max-w-4xl w-full flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
@@ -114,7 +137,7 @@ export const GallerySection: React.FC = () => {
               alt="Zoomed Gallery" 
               className="max-h-[80vh] w-auto rounded-lg shadow-2xl object-contain border border-gray-700" 
             />
-            <p className="text-white mt-4 text-base md:text-lg font-medium text-center bg-gray-900/80 px-6 py-2 rounded-full border border-gray-800">
+            <p className="text-white mt-4 text-base md:text-lg font-medium text-center bg-gray-900/90 px-6 py-2 rounded-full border border-gray-800 shadow-xl">
               {selectedImage.caption}
             </p>
           </div>
