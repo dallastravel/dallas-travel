@@ -18,8 +18,8 @@ import foto14 from '../assets/images/foto-14.jpeg';
 import foto15 from '../assets/images/foto-15.jpeg';
 import foto16 from '../assets/images/foto-16.jpeg';
 
-// Import gambar background Ka'bah
-import bgKaaba from '../assets/images/hero_kaaba_grandeur_1791292468087.jpg';
+// Import background galeri baru yang elegan
+import bgGalery from '../assets/images/bg-galery.jpeg';
 
 export const GallerySection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -50,14 +50,15 @@ export const GallerySection: React.FC = () => {
 
   return (
     <section id="galeri" className="relative py-20 text-white min-h-[90vh] overflow-hidden">
-      {/* Background Image & Dark Overlay */}
+      {/* Background Image & Deep Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src={bgKaaba} 
-          alt="Kaaba Background" 
-          className="w-full h-full object-cover filter brightness-50 blur-[2px]" 
+          src={bgGalery} 
+          alt="Gallery Background" 
+          className="w-full h-full object-cover" 
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#071E33]/90 via-[#071E33]/95 to-[#071E33]" />
+        {/* Overlay gelap kebiruan khas Dallas Tour agar teks dan foto galeri sangat kontras */}
+        <div className="absolute inset-0 bg-[#071E33]/90 backdrop-blur-[1px]" />
       </div>
 
       {/* Content Container */}
