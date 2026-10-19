@@ -1,26 +1,44 @@
 import React, { useState } from 'react';
 
+// Import gambar secara langsung agar aman saat di-build oleh Vite & GitHub Pages
+import foto1 from '../assets/images/foto-1.jpeg';
+import foto2 from '../assets/images/foto-2.jpeg';
+import foto3 from '../assets/images/foto-3.jpeg';
+import foto4 from '../assets/images/foto-4.jpeg';
+import foto5 from '../assets/images/foto-5.jpeg';
+import foto6 from '../assets/images/foto-6.jpeg';
+import foto7 from '../assets/images/foto-7.jpeg';
+import foto8 from '../assets/images/foto-8.jpeg';
+import foto9 from '../assets/images/foto-9.jpeg';
+import foto10 from '../assets/images/foto-10.jpeg';
+import foto11 from '../assets/images/foto-11.jpeg';
+import foto12 from '../assets/images/foto-12.jpeg';
+import foto13 from '../assets/images/foto-13.jpeg';
+import foto14 from '../assets/images/foto-14.jpeg';
+import foto15 from '../assets/images/foto-15.jpeg';
+import foto16 from '../assets/images/foto-16.jpeg';
+
 export const GallerySection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedImage, setSelectedImage] = useState<{ src: string; caption: string } | null>(null);
 
   const galleryItems = [
-    { id: 1, category: 'makkah', src: `${import.meta.env.BASE_URL}assets/images/foto-1.jpeg`, caption: 'Suasana Tawaf Jamaah di Masjidil Haram' },
-    { id: 2, category: 'makkah', src: `${import.meta.env.BASE_URL}assets/images/foto-2.jpeg`, caption: "Pelaksanaan Sa'i di Shafa dan Marwah" },
-    { id: 3, category: 'madinah', src: `${import.meta.env.BASE_URL}assets/images/foto-3.jpeg`, caption: 'Ziarah Raudhah di Masjid Nabawi' },
-    { id: 4, category: 'madinah', src: `${import.meta.env.BASE_URL}assets/images/foto-4.jpeg`, caption: 'Kunjungan Sejarah ke Jabal Uhud' },
-    { id: 5, category: 'manasik', src: `${import.meta.env.BASE_URL}assets/images/foto-5.jpeg`, caption: 'Manasik Umroh Perdana Calon Jamaah' },
-    { id: 6, category: 'manasik', src: `${import.meta.env.BASE_URL}assets/images/foto-6.jpeg`, caption: 'Simulasi Tata Cara Ihram & Tawaf' },
-    { id: 7, category: 'hotel', src: `${import.meta.env.BASE_URL}assets/images/foto-7.jpeg`, caption: 'Akomodasi Hotel Ring Satu Dekat Pelataran' },
-    { id: 8, category: 'hotel', src: `${import.meta.env.BASE_URL}assets/images/foto-8.jpeg`, caption: 'Layanan Restoran & Menu Nusantara 3x Sehari' },
-    { id: 9, category: 'makkah', src: `${import.meta.env.BASE_URL}assets/images/foto-9.jpeg`, caption: "Doa Bersama di Depan Ka'bah" },
-    { id: 10, category: 'madinah', src: `${import.meta.env.BASE_URL}assets/images/foto-10.jpeg`, caption: 'Suasana Halaman Utama Masjid Nabawi' },
-    { id: 11, category: 'manasik', src: `${import.meta.env.BASE_URL}assets/images/foto-11.jpeg`, caption: 'Pemberian Materi Bimbingan Manasik' },
-    { id: 12, category: 'hotel', src: `${import.meta.env.BASE_URL}assets/images/foto-12.jpeg`, caption: 'Lobby Hotel dan Area Sambutan Jamaah' },
-    { id: 13, category: 'makkah', src: `${import.meta.env.BASE_URL}assets/images/foto-13.jpeg`, caption: 'City Tour Napak Tilas Sejarah Makkah' },
-    { id: 14, category: 'madinah', src: `${import.meta.env.BASE_URL}assets/images/foto-14.jpeg`, caption: 'Kunjungan ke Masjid Quba' },
-    { id: 15, category: 'manasik', src: `${import.meta.env.BASE_URL}assets/images/foto-15.jpeg`, caption: 'Manasik Akbar dan Pelepasan Jamaah' },
-    { id: 16, category: 'makkah', src: `${import.meta.env.BASE_URL}assets/images/foto-16.jpeg`, caption: 'Dokumentasi Spesial "My First Umrah"' },
+    { id: 1, category: 'makkah', src: foto1, caption: 'Suasana Tawaf Jamaah di Masjidil Haram' },
+    { id: 2, category: 'makkah', src: foto2, caption: "Pelaksanaan Sa'i di Shafa dan Marwah" },
+    { id: 3, category: 'madinah', src: foto3, caption: 'Ziarah Raudhah di Masjid Nabawi' },
+    { id: 4, category: 'madinah', src: foto4, caption: 'Kunjungan Sejarah ke Jabal Uhud' },
+    { id: 5, category: 'manasik', src: foto5, caption: 'Manasik Umroh Perdana Calon Jamaah' },
+    { id: 6, category: 'manasik', src: foto6, caption: 'Simulasi Tata Cara Ihram & Tawaf' },
+    { id: 7, category: 'hotel', src: foto7, caption: 'Akomodasi Hotel Ring Satu Dekat Pelataran' },
+    { id: 8, category: 'hotel', src: foto8, caption: 'Layanan Restoran & Menu Nusantara 3x Sehari' },
+    { id: 9, category: 'makkah', src: foto9, caption: "Doa Bersama di Depan Ka'bah" },
+    { id: 10, category: 'madinah', src: foto10, caption: 'Suasana Halaman Utama Masjid Nabawi' },
+    { id: 11, category: 'manasik', src: foto11, caption: 'Pemberian Materi Bimbingan Manasik' },
+    { id: 12, category: 'hotel', src: foto12, caption: 'Lobby Hotel dan Area Sambutan Jamaah' },
+    { id: 13, category: 'makkah', src: foto13, caption: 'City Tour Napak Tilas Sejarah Makkah' },
+    { id: 14, category: 'madinah', src: foto14, caption: 'Kunjungan ke Masjid Quba' },
+    { id: 15, category: 'manasik', src: foto15, caption: 'Manasik Akbar dan Pelepasan Jamaah' },
+    { id: 16, category: 'makkah', src: foto16, caption: 'Dokumentasi Spesial "My First Umrah"' },
   ];
 
   const filteredItems = activeCategory === 'all' 
@@ -28,7 +46,7 @@ export const GallerySection: React.FC = () => {
     : galleryItems.filter(item => item.category === activeCategory);
 
   return (
-    <section id="galeri" className="py-20 bg-gray-900 text-white">
+    <section id="galeri" className="py-20 bg-gray-900 text-white min-h-[90vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <span className="text-amber-500 font-semibold tracking-wider uppercase text-sm">Dokumentasi Perjalanan</span>
@@ -49,7 +67,7 @@ export const GallerySection: React.FC = () => {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeCategory === cat.id 
-                  ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30' 
+                  ? 'bg-amber-600 text-white shadow-lg shadow-amber-600/30 font-bold' 
                   : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
               }`}
             >
@@ -63,7 +81,7 @@ export const GallerySection: React.FC = () => {
             <div
               key={item.id}
               onClick={() => setSelectedImage({ src: item.src, caption: item.caption })}
-              className="overflow-hidden rounded-xl shadow-xl group relative cursor-pointer bg-gray-800 border border-gray-700"
+              className="overflow-hidden rounded-xl shadow-xl group relative cursor-pointer bg-gray-800 border border-gray-700 hover:border-amber-500/50 transition-all"
             >
               <img 
                 src={item.src} 
